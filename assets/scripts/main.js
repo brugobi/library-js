@@ -14,8 +14,8 @@ function Book(title, author, page, readed) {
   this.readed = readed
 }
 
-function addBookToLibrary(asd) {
-  myLibrary.push(asd);
+function addBookToLibrary(book) {
+  myLibrary.push(book);
 }
 
 const bookForm = document.forms['book-form'];
@@ -34,6 +34,7 @@ bookForm.addEventListener('submit', function(e) {
   const td3 = document.createElement('td');
   const td4 = document.createElement('td');
   const deleteButton = document.createElement('button');
+  const readButton = document.createElement('button');
 
   td1.textContent = title;
   td2.textContent = author;
@@ -42,12 +43,15 @@ bookForm.addEventListener('submit', function(e) {
 
   deleteButton.textContent = 'Delete book';
   deleteButton.className = 'delete';
+  readButton.className = 'readButton';
+  td4.id = 'statusRead';
 
   tr.appendChild(td1);
   tr.appendChild(td2);
   tr.appendChild(td3);
   tr.appendChild(td4);
   tr.appendChild(deleteButton);
+  tr.appendChild(readButton);
 
   bookTable.appendChild(tr);
 
@@ -58,13 +62,24 @@ bookForm.addEventListener('submit', function(e) {
   console.log(myLibrary);
 });
 
-const deleteButtons = document.querySelector('#book-table tr');
+const deletedButton = document.querySelector('#book-table');
 
-deleteButtons.addEventListener('click', function(e) {
+deletedButton.addEventListener('click', function(e) {
   if (e.target.className == 'delete') {
-    const th = e.target.parentElement;
-    deleteButtons.removeChild(th);
-    console.log(deleteButtons);
+    const tr = e.target.parentElement;
+    deletedButton.removeChild(tr);
+    console.log(deletedButton);
+  }
+
+  if (e.target.className == 'readButton') {
+    const tr = e.target.getElementById("statusRead");
+    if (tr.innerHTML == 'read') {
+      tr.innerHTML == 'already readed';
+    } else {
+      tr.innerHTML == 'read';
+    }
   }
 });
+
+
 
