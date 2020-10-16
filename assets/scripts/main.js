@@ -1,17 +1,16 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(title, author, page, readed) {
-
   if (readed === 'read') {
     readed = true;
   } else {
     readed = false;
   }
 
-  this.title = title
-  this.author = author
-  this.page = page
-  this.readed = readed
+  this.title = title;
+  this.author = author;
+  this.page = page;
+  this.readed = readed;
 }
 
 function addBookToLibrary(book) {
@@ -21,7 +20,7 @@ function addBookToLibrary(book) {
 const bookForm = document.forms['book-form'];
 const bookTable = document.querySelector('#book-table');
 
-bookForm.addEventListener('submit', function(e) {
+bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const title = bookForm.querySelector('#title').value;
   const author = bookForm.querySelector('#author').value;
@@ -32,54 +31,42 @@ bookForm.addEventListener('submit', function(e) {
   const td1 = document.createElement('td');
   const td2 = document.createElement('td');
   const td3 = document.createElement('td');
-  const td4 = document.createElement('td');
+  const td4 = document.createElement('button');
   const deleteButton = document.createElement('button');
-  const readButton = document.createElement('button');
 
   td1.textContent = title;
   td2.textContent = author;
   td3.textContent = page;
   td4.textContent = readed;
 
-  deleteButton.textContent = 'Delete book';
+  deleteButton.textContent = 'Delete';
   deleteButton.className = 'delete';
-  readButton.className = 'readButton';
-  td4.id = 'statusRead';
+  td4.id = 'readButton';
 
   tr.appendChild(td1);
   tr.appendChild(td2);
   tr.appendChild(td3);
   tr.appendChild(td4);
   tr.appendChild(deleteButton);
-  tr.appendChild(readButton);
 
   bookTable.appendChild(tr);
-
   const createdBook = new Book(title, author, page, readed);
 
   addBookToLibrary(createdBook);
-
-  console.log(myLibrary);
 });
 
-const deletedButton = document.querySelector('#book-table');
-
-deletedButton.addEventListener('click', function(e) {
-  if (e.target.className == 'delete') {
+bookTable.addEventListener('click', (e) => {
+  if (e.target.className === 'delete') {
     const tr = e.target.parentElement;
-    deletedButton.removeChild(tr);
-    console.log(deletedButton);
+    bookTable.removeChild(tr);
   }
 
-  if (e.target.className == 'readButton') {
-    const tr = e.target.getElementById("statusRead");
-    if (tr.innerHTML == 'read') {
-      tr.innerHTML == 'already readed';
+  if (e.target.id === 'readButton') {
+    const btn = e.target;
+    if (btn.textContent === 'read') {
+      btn.textContent = 'already Readed';
     } else {
-      tr.innerHTML == 'read';
+      btn.textContent = 'read';
     }
   }
 });
-
-
-
