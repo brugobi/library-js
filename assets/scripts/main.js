@@ -45,15 +45,27 @@ function addElementsToHtml (title, author, page, readed) {
   bookTable.appendChild(tr);
 }
 
+function clearInput(titleS, authorS, pageS, readedS) {
+  titleS.value = '';
+  authorS.value = '';
+  pageS.value = '';
+  readedS.value = 'read';
+}
+
 bookForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const title = bookForm.querySelector('#title').value;
-  const author = bookForm.querySelector('#author').value;
-  const page = bookForm.querySelector('#page').value;
-  const readed = bookForm.querySelector('#read').value;
+  const titleS = bookForm.querySelector('#title');
+  const title = titleS.value;
+  const authorS = bookForm.querySelector('#author');
+  const author = authorS.value;
+  const pageS = bookForm.querySelector('#page');
+  const page = pageS.value;
+  const readedS = bookForm.querySelector('#read');
+  const readed = readedS.value;
   const createdBook = new Book(title, author, page, readed);
 
   addElementsToHtml(title, author, page, readed);
+  clearInput(titleS, authorS, pageS, readedS);
   addBookToLibrary(createdBook);
 });
 
