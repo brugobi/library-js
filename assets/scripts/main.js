@@ -20,7 +20,7 @@ function addBookToLibrary(book) {
 const bookForm = document.forms['book-form'];
 const bookTable = document.querySelector('#book-table');
 
-function addElementsToHtml (title, author, page, readed) {
+function addElementsToHtml(title, author, page, readed) {
   const tr = document.createElement('tr');
   const td1 = document.createElement('td');
   const td2 = document.createElement('td');
