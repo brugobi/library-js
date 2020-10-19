@@ -2,11 +2,31 @@
 
 > This project consists of creating a basic DOM manipulation website in which we are able to Add and Delete books.
 
+![screenshot](./Screenshot.png)
+
 ## Built With
 
 - HTML
 - CSS
 - JavaScript
+
+## Getting Started
+
+### Prerequisites
+- Any Browser
+To get started open the directory where you will save this repo by typing on your terminal:
+```
+$ cd <directory>
+```
+- Clone the repo typing:
+```
+$ git clone git@github.com:brugobi/library-js.git
+```
+
+### Usage
+- In any Brownser open index.html
+
+
 
 ## Authors
 
